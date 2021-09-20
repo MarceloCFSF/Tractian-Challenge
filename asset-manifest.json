@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/Tractian-Challenge/static/css/main.e8e7cfcd.chunk.css",
+    "main.js": "/Tractian-Challenge/static/js/main.45b482cb.chunk.js",
+    "main.js.map": "/Tractian-Challenge/static/js/main.45b482cb.chunk.js.map",
+    "runtime-main.js": "/Tractian-Challenge/static/js/runtime-main.2c6d0278.js",
+    "runtime-main.js.map": "/Tractian-Challenge/static/js/runtime-main.2c6d0278.js.map",
+    "static/css/2.a95be28f.chunk.css": "/Tractian-Challenge/static/css/2.a95be28f.chunk.css",
+    "static/js/2.7bbaa072.chunk.js": "/Tractian-Challenge/static/js/2.7bbaa072.chunk.js",
+    "static/js/2.7bbaa072.chunk.js.map": "/Tractian-Challenge/static/js/2.7bbaa072.chunk.js.map",
+    "static/js/3.a5df336a.chunk.js": "/Tractian-Challenge/static/js/3.a5df336a.chunk.js",
+    "static/js/3.a5df336a.chunk.js.map": "/Tractian-Challenge/static/js/3.a5df336a.chunk.js.map",
+    "index.html": "/Tractian-Challenge/index.html",
+    "static/css/2.a95be28f.chunk.css.map": "/Tractian-Challenge/static/css/2.a95be28f.chunk.css.map",
+    "static/css/main.e8e7cfcd.chunk.css.map": "/Tractian-Challenge/static/css/main.e8e7cfcd.chunk.css.map",
+    "static/js/2.7bbaa072.chunk.js.LICENSE.txt": "/Tractian-Challenge/static/js/2.7bbaa072.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.2c6d0278.js",
+    "static/css/2.a95be28f.chunk.css",
+    "static/js/2.7bbaa072.chunk.js",
+    "static/css/main.e8e7cfcd.chunk.css",
+    "static/js/main.45b482cb.chunk.js"
+  ]
+}
