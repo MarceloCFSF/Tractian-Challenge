@@ -1,4 +1,4 @@
-import { Button, Col, Image, Modal, Row } from 'antd';
+import { Button, Col, Image, Modal, Row, Typography } from 'antd';
 import React from 'react';
 import { IAsset } from '../types/global.type';
 
@@ -45,43 +45,65 @@ const Asset: React.FC<IModal> = (
         </Button>
       ]}
     >
-      <Row>
-        <Col span="8">
-          <Image src={asset?.image}/>
-        </Col>
-        <Col>
-          <Value title="Healthscore" value={asset?.healthscore}/>
-          <Value title="Status" value={asset?.status}/>
-          <Value title="Modelo" value={asset?.model}/>
-          <p><strong>Sensores:</strong></p>
-          {asset?.sensors.map(sensor => (
-            <ul>
-              <li>{sensor}</li>
-            </ul>
-          ))}
-          <p><strong>Especificações: </strong></p>
+        <Image src={asset?.image}/>
+        <Value title="Healthscore" value={asset?.healthscore}/>
+        <Value title="Status" value={asset?.status}/>
+        <Value title="Modelo" value={asset?.model}/>
+        <p><strong>Sensores:</strong></p>
+        {asset?.sensors.map(sensor => (
           <ul>
-            <li>
-              <Value 
-                title="totalUptime"
-                value={asset?.metrics.totalUptime}>
-              </Value>
-            </li>
-            <li>
-              <Value 
-                title="totalCollectsUptime"
-                value={asset?.metrics.totalCollectsUptime}>
-              </Value>
-            </li>
-            <li>
-              <Value 
-                title="lastUptimeAt"
-                value={asset?.metrics.lastUptimeAt}>
-              </Value>
-            </li>
+            <li>{sensor}</li>
           </ul>
-        </Col>
-      </Row>
+        ))}
+        <p><strong>Metricas: </strong></p>
+        <ul>
+          {asset?.specifications.maxTemp &&              
+            <li>
+              <Value 
+                title="Temperatura Máxima"
+                value={asset?.specifications.maxTemp + " ºC"}>
+              </Value>
+            </li>
+          }
+          {asset?.specifications.power &&              
+            <li>
+              <Value 
+                title="Potência"
+                value={asset?.specifications.power + " kWh"}>
+              </Value>
+            </li>
+          }
+          {asset?.specifications.rpm &&              
+            <li>
+              <Value 
+                title="RPM"
+                value={asset?.specifications.rpm + " RPM"}>
+              </Value>
+            </li>
+          }
+        </ul>
+        <p><strong>Especificações: </strong></p>
+        <ul>
+          <li>
+            <Value 
+              title="totalUptime"
+              value={asset?.metrics.totalUptime}>
+            </Value>
+          </li>
+          <li>
+            <Value 
+              title="totalCollectsUptime"
+              value={asset?.metrics.totalCollectsUptime}>
+            </Value>
+          </li>
+          <li>
+            <Value 
+              title="lastUptimeAt"
+              value={asset?.metrics.lastUptimeAt}>
+            </Value>
+          </li>
+        </ul>
+
     </Modal>
   );
 }

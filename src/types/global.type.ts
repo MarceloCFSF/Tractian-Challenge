@@ -27,7 +27,11 @@ export interface IAsset {
   healthscore: number;
   name: string;
   image: string;
-  specifications: object;
+  specifications: {
+    maxTemp?: number
+    power?: number
+    rpm?: number
+  };
   metrics: {
     totalCollectsUptime: number
     totalUptime: number
