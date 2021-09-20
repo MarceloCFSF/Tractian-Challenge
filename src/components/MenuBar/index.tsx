@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import { IAsset, ICompany, IItem, IUnit, IUser } from "../../types/global.type";
-import { Menu } from "antd";
+import { Button, Menu, List } from "antd";
 import SubMenu from "antd/lib/menu/SubMenu";
 import api from "../../services/api";
+import {
+  UserOutlined,
+  PlusOutlined
+} from '@ant-design/icons';
 
 interface IParams {
   show: () => void;
@@ -71,10 +75,16 @@ const MenuBar: React.FC<IParams> = ({show, set}) => {
                   <SubMenu 
                     key={"users" + unit.id} 
                     title="Usuários" 
+                    icon={<UserOutlined />}
                   >
                     {getUsers(company.id, unit.id).map(
                       ({id, name, email}) => (
-                        <Menu.Item key={"user" + id}>{name}</Menu.Item>
+                        <Menu.Item key={"user" + id}>
+                          <List.Item.Meta
+                            title={name}
+                            description={email}
+                          />
+                        </Menu.Item>
                       )
                     )}
                   </SubMenu>
@@ -82,7 +92,12 @@ const MenuBar: React.FC<IParams> = ({show, set}) => {
                   <SubMenu key={"assets" + unit.id} title="Ativos">
                     {getAssets(company.id, unit.id).map((asset) => (
                       <Menu.Item key={"asset" + asset.id}>
-                        {asset.name}
+                        <Button 
+                          onClick={() => handleButton(asset)}
+                          type="text"
+                        >
+                          {asset.name}
+                        </Button>
                       </Menu.Item>
                     ))}
                   </SubMenu>

@@ -7,24 +7,66 @@ import {
 import MenuBar from './components/MenuBar';
 import './App.css'
 
+import HighchartsReact from "highcharts-react-official";
+import Highcharts from 'highcharts'
+
+import Asset from "./components/Asset";
 import { IAsset } from "./types/global.type";
 
 const { Header, Content, Sider } = Layout;
 
 function App() {
-  const [visible, setVisible] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false)
+  const [assets, setAssets] = useState<IAsset[]>([])
   const [asset, setAsset] = useState<IAsset>()
   const [collapsed, setCollapsed] = useState<boolean>(false)
+  
   const options = {
+    chart: {
+      type: 'column'
+    },
     title: {
-      text: 'My chart'
+      text: 'Healthscore dos Ativos'
+    },
+    xAxis: {
+      categories: assets.map(asset => asset.name),
+      title: {
+        text: null
+      }
+    },
+    yAxis: {
+      min: 0,
+      title: {
+        text: 'Population (millions)',
+        align: 'high'
+      },
+      labels: {
+        overflow: 'justify'
+      }
+    },
+    plotOptions: {
+      column: {
+        dataLabels: {
+          enabled: true
+        }
+      }
     },
     series: [{
-      data: [1, 2, 3]
+      name: 'Healthscore',
+      data: assets.map(asset => asset.healthscore)
     }]
   }
 
-  function handleOk() {
+  function handleOk(newAsset:IAsset | undefined) {
+    if(newAsset) {
+      assets.indexOf(newAsset) === -1
+      && assets.push(newAsset)
+    }
+    setVisible(false)
+  }
+
+  function handleRemove(id?:number) {
+    setAssets(assets.filter(asset => asset.id != id))
     setVisible(false)
   }
 
@@ -42,6 +84,13 @@ function App() {
 
   return (
     <>
+      <Asset 
+        visible={visible}
+        asset={asset}
+        handleOk={handleOk}
+        handleCancel={handleCancel}
+        handleRemove={handleRemove}
+      />
       <Layout>
         <Header className="header">
           <div className="logo">
@@ -69,6 +118,10 @@ function App() {
               })}
             </Header>
             <Content className="content">
+              <HighchartsReact
+                highcharts={Highcharts}
+                options={options}
+              />
             </Content>
           </Layout>
         </Layout>
