@@ -1,6 +1,6 @@
 import { Button, Col, Image, Modal, Row } from 'antd';
 import React from 'react';
-import { IAsset } from '../../types/global.type';
+import { IAsset } from '../types/global.type';
 
 interface IModal {
   asset: IAsset | undefined;

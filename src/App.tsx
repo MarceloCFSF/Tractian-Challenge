@@ -1,5 +1,5 @@
 import { createElement, useState } from "react";
-import { Layout } from "antd";
+import { Empty, Layout } from "antd";
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -37,8 +37,7 @@ function App() {
     yAxis: {
       min: 0,
       title: {
-        text: 'Population (millions)',
-        align: 'high'
+        text: null,
       },
       labels: {
         overflow: 'justify'
@@ -66,7 +65,7 @@ function App() {
   }
 
   function handleRemove(id?:number) {
-    setAssets(assets.filter(asset => asset.id != id))
+    setAssets(assets.filter(asset => asset.id !== id))
     setVisible(false)
   }
 
@@ -118,10 +117,13 @@ function App() {
               })}
             </Header>
             <Content className="content">
-              <HighchartsReact
-                highcharts={Highcharts}
-                options={options}
-              />
+              {assets.length === 0
+                ? <Empty />
+                : <HighchartsReact
+                    highcharts={Highcharts}
+                    options={options}
+                  />
+              }
             </Content>
           </Layout>
         </Layout>
